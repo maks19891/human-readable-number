@@ -1,6 +1,6 @@
-let numbersArr = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-let dozensArr = ['0', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
-let dozensTeen = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+let numbers = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+let dozens = ['0', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+let dozens2 = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
 let first;
 let second;
 
@@ -10,23 +10,23 @@ module.exports = function toReadable (number) {
     third = parseInt(number.toString()[2]);
     
     if(number.toString().length === 1) {
-      return numbersArr[number];
+      return numbers[number];
     } else if(number.toString().length === 2 && number%10 === 0) {
-      return dozensArr[number/10];
+      return dozens[number/10];
     } else if(number.toString().length === 2 && number<20) {
       number = parseInt(number.toString()[1]);
-      return dozensTeen[number];
+      return dozens2[number];
     } else if(number.toString().length === 2 && number>20) { 
-      return dozensArr[first] + " " + numbersArr[second];
+      return dozens[first] + " " + numbers[second];
     } else if(number.toString().length === 3 && parseInt(number.toString()[1]) <1 && parseInt(number.toString()[2]) <1) {
-      return numbersArr[first] + ' hundred';
+      return numbers[first] + ' hundred';
     } else if(number.toString().length === 3 && parseInt(number.toString()[1]) <2 && parseInt(number.toString()[1]) >=1) {
-      return numbersArr[first] + ' hundred ' + dozensTeen[third];
+      return numbers[first] + ' hundred ' + dozens2[third];
     } else if(number.toString().length === 3 && parseInt(number.toString()[1]) <1) {
-      return numbersArr[first] + ' hundred ' + numbersArr[third];
+      return numbers[first] + ' hundred ' + numbers[third];
     } else if(number.toString().length === 3 && parseInt(number.toString()[1]) >= 2 && parseInt(number.toString()[2]) <1) {
-      return numbersArr[first] + ' hundred ' + dozensArr[second];
+      return numbers[first] + ' hundred ' + dozens[second];
     } else if(number.toString().length === 3 && parseInt(number.toString()[1]) >= 2) {
-      return numbersArr[first] + ' hundred ' + dozensArr[second] + " " + numbersArr[third];
+      return numbers[first] + ' hundred ' + dozens[second] + " " + numbers[third];
     }
   }
